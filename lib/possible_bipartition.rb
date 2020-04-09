@@ -11,14 +11,14 @@ def possible_bipartition(dislikes)
     end
     
     while !stack.empty?
-      curr_dog = stack.pop
-      disliked_dogs = dislikes[curr_dog]
+      current = stack.pop
+      no_go = dislikes[current]
       
-      disliked_dogs.each do |dog|
+      no_go.each do |dog|
         if !visited[dog]
           stack << dog
-          visited[dog] = number(visited[curr_dog])
-        elsif visited[dog] == visited[curr_dog]
+          visited[dog] = number(visited[current])
+        elsif visited[dog] == visited[current]
           return false
         end
       end
